@@ -71,14 +71,14 @@ func NewCPU() *CPU {
 }
 
 func (c *CPU) Write(address uint16, data uint8) {
-
+	c.bus.Write(address, data)
 }
 
 func (c *CPU) Read(address uint16) uint8 {
-	return 0
+	return c.bus.Read(address)
 }
 
-func (c *CPU) Fetch() {
+func (c *CPU) fetch() {
 
 }
 
