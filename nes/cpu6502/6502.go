@@ -57,9 +57,13 @@ type CPU struct {
 	//   cates whether something has, or has not occurred). Bits of this register
 	//   are altered depending on the result of arithmetic and logical operations.
 	//   These bits are described below:
-	Status uint8
+	Status          uint8
+	instructions    [256]Instruction
+	addressingModes [256]Instruction
 
 	bus *bus.Bus
+
+	cycles int
 }
 
 // NewCPU returns a new CPU object with all flags initialized.
@@ -78,10 +82,28 @@ func (c *CPU) Read(address uint16) uint8 {
 	return c.bus.Read(address)
 }
 
-func (c *CPU) fetch() {
+// Tick executes a single fetch/decode/execute cycle
+func (c *CPU) Tick() {
+	if c.cycles == 0 {
+		instructionByte := c.Read(c.PC)
+		instruction := &c.instructions[instructionByte]
 
+		instruction.Execute()
+	}
+	c.cycles--
+	// instruction := decode()
 }
 
+// fetch fetches the next byte
+func (c *CPU) fetch() uint8 {
+	return 0
+}
+
+// func (c *CPU) decode() *Instruction {
+// 	return &instructions[]
+// }
+
+// ConnectBus connects a bus to the CPU
 func (c *CPU) ConnectBus(bus *bus.Bus) {
 	c.bus = bus
 }
