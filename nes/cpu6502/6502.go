@@ -1,6 +1,7 @@
 package cpu6502
 
 import (
+	"fmt"
 	"nesgo/nes/bus"
 	"nesgo/nes/cpu6502/flags"
 )
@@ -57,13 +58,13 @@ type CPU struct {
 	//   cates whether something has, or has not occurred). Bits of this register
 	//   are altered depending on the result of arithmetic and logical operations.
 	//   These bits are described below:
-	Status          uint8
+	Status uint8
+
+	cycles          int
 	instructions    [256]Instruction
-	addressingModes [256]Instruction
+	addressingModes [13]AddressingMode
 
 	bus *bus.Bus
-
-	cycles int
 }
 
 // NewCPU returns a new CPU object with all flags initialized.
@@ -71,6 +72,8 @@ func NewCPU() *CPU {
 	cpu := CPU{}
 	// The unused flag should be set at all times
 	cpu.Status = flags.SetFlag(0x00, flags.U)
+	cpu.instructions = cpu.buildInstructionTable()
+	cpu.addressingModes = cpu.buildAddressingModeTable()
 	return &cpu
 }
 
@@ -82,9 +85,31 @@ func (c *CPU) Read(address uint16) uint8 {
 	return c.bus.Read(address)
 }
 
+// Dump prints the CPU state to the console
+func (c *CPU) Dump() {
+	fmt.Printf("PC: %X\n", c.PC)
+	fmt.Printf("A : %X\n", c.A)
+	fmt.Printf("X : %X\n", c.X)
+	fmt.Printf("Y : %X\n", c.Y)
+	fmt.Printf("SP: %X\n", c.SP)
+	fmt.Printf("Status: %08b\n", c.Status)
+	fmt.Printf("Cycles: %v\n", c.cycles)
+
+	// fmt.Println("Instructions: ")
+	// for opcode, instruction := range c.instructions {
+	// 	fmt.Printf("    %X: %s\n      Addressing Mode: %s\n      %d cycles\n",
+	// 		opcode,
+	// 		instruction.Name,
+	// 		c.addressingModes[instruction.AddressingMode].Name,
+	// 		instruction.Cycles,
+	// 	)
+	// }
+}
+
 // Tick executes a single fetch/decode/execute cycle
 func (c *CPU) Tick() {
 	if c.cycles == 0 {
+		c.Dump()
 		instructionByte := c.Read(c.PC)
 		instruction := &c.instructions[instructionByte]
 

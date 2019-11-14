@@ -12,5 +12,6 @@ func main() {
 	cpu.ConnectBus(&bus)
 	clock := clock.Clock{}
 	clock.RegisterComponent(cpu, 3)
+	cpu.Dump()
 	clock.Start()
 }

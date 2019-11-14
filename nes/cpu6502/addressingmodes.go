@@ -1,5 +1,59 @@
 package cpu6502
 
+// An AddressingMode handles how the data for the current operation is fetched
+type AddressingMode struct {
+	Name   string
+	Lookup func() uint8
+}
+
+// Addressing Modes:
+// Imp - Implied
+// Acc - Accumulator
+// Imm - Immediate
+// Zp0 - Zero Page
+// Zpx - Zero Page X
+// Zpy - Zero Page Y
+// Abs - Absolute
+// Abx - Absolute X
+// Aby - Absolute Y
+// Rel - Relative
+// Izx - Indirect X
+// Izy - Indirect Y
+// Ind - Indirect
+const (
+	Imp uint8 = iota
+	Acc
+	Imm
+	Zp0
+	Zpx
+	Zpy
+	Abs
+	Abx
+	Aby
+	Rel
+	Izx
+	Izy
+	Ind
+)
+
+func (c *CPU) buildAddressingModeTable() [13]AddressingMode {
+	return [...]AddressingMode{
+		{"Implied", c.imp},
+		{"Accumulator", c.acc},
+		{"Immediate", c.imm},
+		{"Zero Page", c.zp0},
+		{"Zero Page X", c.zpx},
+		{"Zero Page Y", c.zpy},
+		{"Absolute", c.abs},
+		{"Absolute X", c.abx},
+		{"Absolute Y", c.aby},
+		{"Relative", c.rel},
+		{"Indirect X", c.izx},
+		{"Indirect Y", c.izy},
+		{"Indirect", c.ind},
+	}
+}
+
 // Accumulator
 func (c *CPU) acc() uint8 {
 	return 0
