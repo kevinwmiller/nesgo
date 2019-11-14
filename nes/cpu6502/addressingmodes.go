@@ -111,12 +111,28 @@ func (c *CPU) abs() (uint8, uint16, bool) {
 
 // Absolute X
 func (c *CPU) abx() (uint8, uint16, bool) {
-	return 0, 0, false
+	hiByte := c.Read(c.PC)
+	c.PC++
+	lowByte := c.Read(c.PC)
+	c.PC++
+	addr := buildAddress(hiByte, lowByte)
+	addr += uint16(c.X)
+	data := c.Read(addr)
+	pageBoundaryCrossed := addr&0xFF00 != (uint16(hiByte) << 8)
+	return data, addr, pageBoundaryCrossed
 }
 
 // Absolute Y
 func (c *CPU) aby() (uint8, uint16, bool) {
-	return 0, 0, false
+	hiByte := c.Read(c.PC)
+	c.PC++
+	lowByte := c.Read(c.PC)
+	c.PC++
+	addr := buildAddress(hiByte, lowByte)
+	addr += uint16(c.Y)
+	data := c.Read(addr)
+	pageBoundaryCrossed := addr&0xFF00 != (uint16(hiByte) << 8)
+	return data, addr, pageBoundaryCrossed
 }
 
 // Implied
@@ -126,7 +142,10 @@ func (c *CPU) imp() (uint8, uint16, bool) {
 
 // Relative
 func (c *CPU) rel() (uint8, uint16, bool) {
-	return 0, 0, false
+	addr := c.PC
+	data := c.Read(addr)
+	c.PC++
+	return data, addr, false
 }
 
 // Indirect X
