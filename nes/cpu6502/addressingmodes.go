@@ -21,7 +21,8 @@ type AddressingMode struct {
 // Izy - Indirect Y
 // Ind - Indirect
 const (
-	Imp uint8 = iota
+	Und uint8 = iota
+	Imp
 	Acc
 	Imm
 	Zp0
@@ -36,8 +37,9 @@ const (
 	Ind
 )
 
-func (c *CPU) buildAddressingModeTable() [13]AddressingMode {
+func (c *CPU) buildAddressingModeTable() [14]AddressingMode {
 	return [...]AddressingMode{
+		{"Undefined", c.und},
 		{"Implied", c.imp},
 		{"Accumulator", c.acc},
 		{"Immediate", c.imm},

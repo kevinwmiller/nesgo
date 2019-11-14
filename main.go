@@ -13,5 +13,5 @@ func main() {
 	clock := clock.Clock{}
 	clock.RegisterComponent(cpu, 3)
 	cpu.Dump()
-	clock.Start()
+	// clock.Start()
 }

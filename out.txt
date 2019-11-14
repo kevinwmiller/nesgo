@@ -1,0 +1,265 @@
+./build/"nesgo"
+PC: 0
+A : 0
+X : 0
+Y : 0
+SP: 0
+Status: 00100000
+Cycles: 0
+Instructions: 
+    00: BRK - Implied      - 0 cycles
+    01: ORA - Indirect X   - 0 cycles
+    02: UND - Undefined    - 0 cycles
+    03: UND - Undefined    - 0 cycles
+    04: UND - Undefined    - 0 cycles
+    05: ORA - Zero Page    - 0 cycles
+    06: ASL - Zero Page    - 0 cycles
+    07: UND - Undefined    - 0 cycles
+    08: PHP - Implied      - 0 cycles
+    09: ORA - Immediate    - 0 cycles
+    0A: ASL - Accumulator  - 0 cycles
+    0B: UND - Undefined    - 0 cycles
+    0C: UND - Undefined    - 0 cycles
+    0D: ORA - Absolute     - 0 cycles
+    0E: ASL - Absolute     - 0 cycles
+    0F: UND - Undefined    - 0 cycles
+    10: BPL - Implied      - 0 cycles
+    11: ORA - Indirect Y   - 0 cycles
+    12: UND - Undefined    - 0 cycles
+    13: UND - Undefined    - 0 cycles
+    14: UND - Undefined    - 0 cycles
+    15: ORA - Zero Page X  - 0 cycles
+    16: ASL - Zero Page X  - 0 cycles
+    17: UND - Undefined    - 0 cycles
+    18: CLC - Implied      - 0 cycles
+    19: ORA - Absolute Y   - 0 cycles
+    1A: UND - Undefined    - 0 cycles
+    1B: UND - Undefined    - 0 cycles
+    1C: UND - Undefined    - 0 cycles
+    1D: ORA - Absolute X   - 0 cycles
+    1E: ASL - Absolute X   - 0 cycles
+    1F: UND - Undefined    - 0 cycles
+    20: JSR - Implied      - 0 cycles
+    21: AND - Indirect X   - 0 cycles
+    22: UND - Undefined    - 0 cycles
+    23: UND - Undefined    - 0 cycles
+    24: BIT - Zero Page    - 0 cycles
+    25: AND - Zero Page    - 0 cycles
+    26: ROL - Zero Page    - 0 cycles
+    27: UND - Undefined    - 0 cycles
+    28: PLP - Implied      - 0 cycles
+    29: AND - Immediate    - 0 cycles
+    2A: ROL - Accumulator  - 0 cycles
+    2B: UND - Undefined    - 0 cycles
+    2C: BIT - Absolute     - 0 cycles
+    2D: AND - Absolute     - 0 cycles
+    2E: ROL - Absolute     - 0 cycles
+    2F: UND - Undefined    - 0 cycles
+    30: BMI - Implied      - 0 cycles
+    31: AND - Indirect Y   - 0 cycles
+    32: UND - Undefined    - 0 cycles
+    33: UND - Undefined    - 0 cycles
+    34: UND - Undefined    - 0 cycles
+    35: AND - Zero Page X  - 0 cycles
+    36: ROL - Zero Page X  - 0 cycles
+    37: UND - Undefined    - 0 cycles
+    38: SEC - Implied      - 0 cycles
+    39: AND - Absolute Y   - 0 cycles
+    3A: UND - Undefined    - 0 cycles
+    3B: UND - Undefined    - 0 cycles
+    3C: UND - Undefined    - 0 cycles
+    3D: AND - Absolute X   - 0 cycles
+    3E: ROL - Absolute X   - 0 cycles
+    3F: UND - Undefined    - 0 cycles
+    40: RTI - Implied      - 0 cycles
+    41: EOR - Indirect X   - 0 cycles
+    42: UND - Undefined    - 0 cycles
+    43: UND - Undefined    - 0 cycles
+    44: UND - Undefined    - 0 cycles
+    45: EOR - Zero Page    - 0 cycles
+    46: LSR - Zero Page    - 0 cycles
+    47: UND - Undefined    - 0 cycles
+    48: PHA - Implied      - 0 cycles
+    49: EOR - Immediate    - 0 cycles
+    4A: LSR - Accumulator  - 0 cycles
+    4B: UND - Undefined    - 0 cycles
+    4C: JMP - Absolute     - 0 cycles
+    4D: EOR - Absolute     - 0 cycles
+    4E: LSR - Absolute     - 0 cycles
+    4F: UND - Undefined    - 0 cycles
+    50: BVC - Implied      - 0 cycles
+    51: EOR - Indirect Y   - 0 cycles
+    52: UND - Undefined    - 0 cycles
+    53: UND - Undefined    - 0 cycles
+    54: UND - Undefined    - 0 cycles
+    55: EOR - Zero Page X  - 0 cycles
+    56: LSR - Zero Page X  - 0 cycles
+    57: UND - Undefined    - 0 cycles
+    58: CLI - Implied      - 0 cycles
+    59: EOR - Absolute Y   - 0 cycles
+    5A: UND - Undefined    - 0 cycles
+    5B: UND - Undefined    - 0 cycles
+    5C: UND - Undefined    - 0 cycles
+    5D: EOR - Absolute X   - 0 cycles
+    5E: LSR - Absolute X   - 0 cycles
+    5F: UND - Undefined    - 0 cycles
+    60: RTS - Implied      - 0 cycles
+    61: ADC - Indirect X   - 0 cycles
+    62: UND - Undefined    - 0 cycles
+    63: UND - Undefined    - 0 cycles
+    64: UND - Undefined    - 0 cycles
+    65: ADC - Zero Page    - 0 cycles
+    66: ROR - Zero Page    - 0 cycles
+    67: UND - Undefined    - 0 cycles
+    68: PLA - Implied      - 0 cycles
+    69: ADC - Immediate    - 0 cycles
+    6A: ROR - Accumulator  - 0 cycles
+    6B: UND - Undefined    - 0 cycles
+    6C: JMP - Indirect     - 0 cycles
+    6D: ADC - Absolute     - 0 cycles
+    6E: ROR - Absolute     - 0 cycles
+    6F: UND - Undefined    - 0 cycles
+    70: BVS - Implied      - 0 cycles
+    71: ADC - Indirect Y   - 0 cycles
+    72: UND - Undefined    - 0 cycles
+    73: UND - Undefined    - 0 cycles
+    74: UND - Undefined    - 0 cycles
+    75: ADC - Zero Page X  - 0 cycles
+    76: ROR - Zero Page X  - 0 cycles
+    77: UND - Undefined    - 0 cycles
+    78: SEI - Implied      - 0 cycles
+    79: ADC - Absolute Y   - 0 cycles
+    7A: UND - Undefined    - 0 cycles
+    7B: UND - Undefined    - 0 cycles
+    7C: UND - Undefined    - 0 cycles
+    7D: ADC - Absolute X   - 0 cycles
+    7E: ROR - Absolute X   - 0 cycles
+    7F: UND - Undefined    - 0 cycles
+    80: UND - Undefined    - 0 cycles
+    81: STA - Indirect X   - 0 cycles
+    82: UND - Undefined    - 0 cycles
+    83: UND - Undefined    - 0 cycles
+    84: STY - Zero Page    - 0 cycles
+    85: STA - Zero Page    - 0 cycles
+    86: STX - Zero Page    - 0 cycles
+    87: UND - Undefined    - 0 cycles
+    88: DEY - Implied      - 0 cycles
+    89: UND - Undefined    - 0 cycles
+    8A: TXA - Implied      - 0 cycles
+    8B: UND - Undefined    - 0 cycles
+    8C: STY - Absolute     - 0 cycles
+    8D: STA - Absolute     - 0 cycles
+    8E: STX - Absolute     - 0 cycles
+    8F: UND - Undefined    - 0 cycles
+    90: BCC - Implied      - 0 cycles
+    91: STA - Indirect Y   - 0 cycles
+    92: UND - Undefined    - 0 cycles
+    93: UND - Undefined    - 0 cycles
+    94: STY - Zero Page X  - 0 cycles
+    95: STA - Zero Page X  - 0 cycles
+    96: STX - Zero Page Y  - 0 cycles
+    97: UND - Undefined    - 0 cycles
+    98: TYA - Implied      - 0 cycles
+    99: STA - Absolute Y   - 0 cycles
+    9A: TXS - Implied      - 0 cycles
+    9B: UND - Undefined    - 0 cycles
+    9C: UND - Undefined    - 0 cycles
+    9D: STA - Absolute X   - 0 cycles
+    9E: UND - Undefined    - 0 cycles
+    9F: UND - Undefined    - 0 cycles
+    A0: LDY - Immediate    - 0 cycles
+    A1: LDA - Indirect X   - 0 cycles
+    A2: LDX - Immediate    - 0 cycles
+    A3: UND - Undefined    - 0 cycles
+    A4: LDY - Zero Page    - 0 cycles
+    A5: LDA - Zero Page    - 0 cycles
+    A6: LDX - Zero Page    - 0 cycles
+    A7: UND - Undefined    - 0 cycles
+    A8: TAY - Implied      - 0 cycles
+    A9: LDA - Immediate    - 0 cycles
+    AA: TAX - Implied      - 0 cycles
+    AB: UND - Undefined    - 0 cycles
+    AC: LDY - Absolute     - 0 cycles
+    AD: LDA - Absolute     - 0 cycles
+    AE: LDX - Absolute     - 0 cycles
+    AF: UND - Undefined    - 0 cycles
+    B0: BCS - Implied      - 0 cycles
+    B1: LDA - Indirect Y   - 0 cycles
+    B2: UND - Undefined    - 0 cycles
+    B3: UND - Undefined    - 0 cycles
+    B4: LDY - Zero Page X  - 0 cycles
+    B5: LDA - Zero Page X  - 0 cycles
+    B6: LDX - Zero Page Y  - 0 cycles
+    B7: UND - Undefined    - 0 cycles
+    B8: CLV - Implied      - 0 cycles
+    B9: LDA - Absolute Y   - 0 cycles
+    BA: TSX - Implied      - 0 cycles
+    BB: UND - Undefined    - 0 cycles
+    BC: LDY - Absolute X   - 0 cycles
+    BD: LDA - Absolute X   - 0 cycles
+    BE: LDX - Absolute Y   - 0 cycles
+    BF: UND - Undefined    - 0 cycles
+    C0: Cpy - Immediate    - 0 cycles
+    C1: CMP - Indirect X   - 0 cycles
+    C2: UND - Undefined    - 0 cycles
+    C3: UND - Undefined    - 0 cycles
+    C4: CPY - Zero Page    - 0 cycles
+    C5: CMP - Zero Page    - 0 cycles
+    C6: DEC - Zero Page    - 0 cycles
+    C7: UND - Undefined    - 0 cycles
+    C8: INY - Implied      - 0 cycles
+    C9: CMP - Immediate    - 0 cycles
+    CA: DEX - Implied      - 0 cycles
+    CB: UND - Undefined    - 0 cycles
+    CC: CPY - Absolute     - 0 cycles
+    CD: CMP - Absolute     - 0 cycles
+    CE: DEC - Absolute     - 0 cycles
+    CF: UND - Undefined    - 0 cycles
+    D0: BNE - Implied      - 0 cycles
+    D1: CMP - Indirect Y   - 0 cycles
+    D2: UND - Undefined    - 0 cycles
+    D3: UND - Undefined    - 0 cycles
+    D4: UND - Undefined    - 0 cycles
+    D5: CMP - Zero Page X  - 0 cycles
+    D6: DEC - Zero Page X  - 0 cycles
+    D7: UND - Undefined    - 0 cycles
+    D8: CLD - Implied      - 0 cycles
+    D9: CMP - Absolute Y   - 0 cycles
+    DA: UND - Undefined    - 0 cycles
+    DB: UND - Undefined    - 0 cycles
+    DC: UND - Undefined    - 0 cycles
+    DD: CMP - Absolute X   - 0 cycles
+    DE: DEC - Absolute X   - 0 cycles
+    DF: UND - Undefined    - 0 cycles
+    E0: CPX - Immediate    - 0 cycles
+    E1: SBC - Indirect X   - 0 cycles
+    E2: UND - Undefined    - 0 cycles
+    E3: UND - Undefined    - 0 cycles
+    E4: CPX - Zero Page    - 0 cycles
+    E5: SBC - Zero Page    - 0 cycles
+    E6: INC - Zero Page    - 0 cycles
+    E7: UND - Undefined    - 0 cycles
+    E8: INX - Implied      - 0 cycles
+    E9: SBC - Immediate    - 0 cycles
+    EA: NOP - Implied      - 0 cycles
+    EB: UND - Undefined    - 0 cycles
+    EC: CPX - Absolute     - 0 cycles
+    ED: SBC - Absolute     - 0 cycles
+    EE: INC - Absolute     - 0 cycles
+    EF: UND - Undefined    - 0 cycles
+    F0: BEQ - Implied      - 0 cycles
+    F1: SBC - Indirect Y   - 0 cycles
+    F2: UND - Undefined    - 0 cycles
+    F3: UND - Undefined    - 0 cycles
+    F4: UND - Undefined    - 0 cycles
+    F5: SBC - Zero Page X  - 0 cycles
+    F6: INC - Zero Page X  - 0 cycles
+    F7: UND - Undefined    - 0 cycles
+    F8: SED - Implied      - 0 cycles
+    F9: SBC - Absolute Y   - 0 cycles
+    FA: UND - Undefined    - 0 cycles
+    FB: UND - Undefined    - 0 cycles
+    FC: UND - Undefined    - 0 cycles
+    FD: SBC - Absolute X   - 0 cycles
+    FE: INC - Absolute X   - 0 cycles
+    FF: UND - Undefined    - 0 cycles

@@ -62,7 +62,7 @@ type CPU struct {
 
 	cycles          int
 	instructions    [256]Instruction
-	addressingModes [13]AddressingMode
+	addressingModes [14]AddressingMode
 
 	bus *bus.Bus
 }
@@ -95,15 +95,15 @@ func (c *CPU) Dump() {
 	fmt.Printf("Status: %08b\n", c.Status)
 	fmt.Printf("Cycles: %v\n", c.cycles)
 
-	// fmt.Println("Instructions: ")
-	// for opcode, instruction := range c.instructions {
-	// 	fmt.Printf("    %X: %s\n      Addressing Mode: %s\n      %d cycles\n",
-	// 		opcode,
-	// 		instruction.Name,
-	// 		c.addressingModes[instruction.AddressingMode].Name,
-	// 		instruction.Cycles,
-	// 	)
-	// }
+	fmt.Println("Instructions: ")
+	for opcode, instruction := range c.instructions {
+		fmt.Printf("    %02X: %s - %-12s - %d cycles\n",
+			opcode,
+			instruction.Name,
+			c.addressingModes[instruction.AddressingMode].Name,
+			instruction.Cycles,
+		)
+	}
 }
 
 // Tick executes a single fetch/decode/execute cycle
