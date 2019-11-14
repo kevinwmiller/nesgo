@@ -8,7 +8,7 @@ import (
 
 // CPU represents an instance of a 2A03 chip which is based on the 6502 processor with the exception of BCD instructions
 type CPU struct {
-	// Register descriptions from nesdev.com - http://nesdev.com/6502.txt
+	// Register descriptions from nesdev.com - http://nesdev.com/6502.txt and http://nesdev.com/6502_cpu.txt
 
 	// THE ACCUMULATOR
 	//   This is THE most important register in the microprocessor. Various ma-
@@ -60,7 +60,7 @@ type CPU struct {
 	//   These bits are described below:
 	Status uint8
 
-	cycles          int
+	cycles          uint8
 	instructions    [256]Instruction
 	addressingModes [14]AddressingMode
 
@@ -85,6 +85,40 @@ func (c *CPU) Read(address uint16) uint8 {
 	return c.bus.Read(address)
 }
 
+// Tick executes a single fetch/decode/execute cycle
+func (c *CPU) Tick() {
+	if c.cycles == 0 {
+		c.Dump()
+		opcode := c.fetch()
+		instruction := &c.instructions[opcode]
+		addressingMode := &c.addressingModes[instruction.AddressingMode]
+		c.cycles = instruction.Cycles
+
+		data, address, pageBoundaryCrossed := addressingMode.Lookup()
+		if pageBoundaryCrossed {
+			c.cycles += instruction.AdditionalCycles
+		}
+		c.cycles += instruction.Execute(data, address)
+	}
+	c.cycles--
+}
+
+// fetch fetches the next instruction
+func (c *CPU) fetch() uint8 {
+	opcode := c.Read(c.PC)
+	c.PC++
+	return opcode
+}
+
+// func (c *CPU) decode() *Instruction {
+// 	return &instructions[]
+// }
+
+// ConnectBus connects a bus to the CPU
+func (c *CPU) ConnectBus(bus *bus.Bus) {
+	c.bus = bus
+}
+
 // Dump prints the CPU state to the console
 func (c *CPU) Dump() {
 	fmt.Printf("PC: %X\n", c.PC)
@@ -93,7 +127,7 @@ func (c *CPU) Dump() {
 	fmt.Printf("Y : %X\n", c.Y)
 	fmt.Printf("SP: %X\n", c.SP)
 	fmt.Printf("Status: %08b\n", c.Status)
-	fmt.Printf("Cycles: %v\n", c.cycles)
+	fmt.Printf("Cycles: %d\n", c.cycles)
 
 	fmt.Println("Instructions: ")
 	for opcode, instruction := range c.instructions {
@@ -104,31 +138,4 @@ func (c *CPU) Dump() {
 			instruction.Cycles,
 		)
 	}
-}
-
-// Tick executes a single fetch/decode/execute cycle
-func (c *CPU) Tick() {
-	if c.cycles == 0 {
-		c.Dump()
-		instructionByte := c.Read(c.PC)
-		instruction := &c.instructions[instructionByte]
-
-		instruction.Execute()
-	}
-	c.cycles--
-	// instruction := decode()
-}
-
-// fetch fetches the next byte
-func (c *CPU) fetch() uint8 {
-	return 0
-}
-
-// func (c *CPU) decode() *Instruction {
-// 	return &instructions[]
-// }
-
-// ConnectBus connects a bus to the CPU
-func (c *CPU) ConnectBus(bus *bus.Bus) {
-	c.bus = bus
 }
