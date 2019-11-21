@@ -6,9 +6,14 @@ type Bus struct {
 }
 
 func (b *Bus) Write(address uint16, data uint8) {
-	b.RAM[address] = data
+	if address >= 0x0000 && address < 0xFFFF {
+		b.RAM[address] = data
+	}
 }
 
 func (b *Bus) Read(address uint16) uint8 {
-	return b.RAM[address]
+	if address >= 0x0000 && address < 0xFFFF {
+		return b.RAM[address]
+	}
+	return 0
 }

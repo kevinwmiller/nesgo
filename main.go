@@ -30,7 +30,7 @@ func main() {
 	glfw.WindowHint(glfw.OpenGLProfile, glfw.OpenGLCoreProfile)
 	glfw.WindowHint(glfw.OpenGLForwardCompatible, glfw.True)
 
-	win, err := glfw.CreateWindow(800, 600, "Nesgo", nil, nil)
+	win, err := glfw.CreateWindow(1024, 720, "Nesgo", nil, nil)
 	if err != nil {
 		panic(fmt.Errorf("could not create opengl renderer: %v", err))
 	}
@@ -41,11 +41,13 @@ func main() {
 		panic(err)
 	}
 	gl.ClearColor(0, 0.5, 1.0, 1.0)
+
+	go clock.Start()
 	for !win.ShouldClose() {
+		fmt.Printf("%+v\n", cpu.PC)
 		gl.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 		win.SwapBuffers()
 		glfw.PollEvents()
 	}
 
-	// clock.Start()
 }

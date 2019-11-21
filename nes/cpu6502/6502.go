@@ -71,9 +71,9 @@ type CPU struct {
 func NewCPU() *CPU {
 	cpu := CPU{}
 	// The unused flag should be set at all times
-	cpu.Status = flags.SetFlag(0x00, flags.U)
 	cpu.instructions = cpu.buildInstructionTable()
 	cpu.addressingModes = cpu.buildAddressingModeTable()
+	cpu.Reset()
 	return &cpu
 }
 
@@ -85,10 +85,30 @@ func (c *CPU) Read(address uint16) uint8 {
 	return c.bus.Read(address)
 }
 
+// Reset resets the CPU to a known state.
+// The program counter starting address is loaded from 0xFFFC and 0xFFFD
+// The registers and flags (with the exception of the unused flag) are initialized to 0
+func (c *CPU) Reset() {
+	// The initial state of the program counter can be found at 0xFFFC and 0xFFFD
+	addr := uint16(0xFFFC)
+	lowByte := c.Read(addr)
+	hiByte := c.Read(addr + 1)
+	c.PC = buildAddress(hiByte, lowByte)
+	c.Status = flags.SetFlag(0x00, flags.U)
+	c.A = 0
+	c.X = 0
+	c.Y = 0
+
+	// http://wiki.nesdev.com/w/index.php/CPU_power_up_state
+	c.SP = 0xFD
+
+	c.cycles = 6
+}
+
 // Tick executes a single fetch/decode/execute cycle
 func (c *CPU) Tick() {
 	if c.cycles == 0 {
-		c.Dump()
+		// c.Dump()
 		opcode := c.fetch()
 		instruction := &c.instructions[opcode]
 		addressingMode := &c.addressingModes[instruction.AddressingMode]
