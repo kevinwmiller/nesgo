@@ -131,11 +131,12 @@ func (c *CPU) Dump() {
 
 	fmt.Println("Instructions: ")
 	for opcode, instruction := range c.instructions {
-		fmt.Printf("    %02X: %s - %-12s - %d cycles\n",
+		fmt.Printf("    %02X: %s - %-12s - %d cycles +%d*\n",
 			opcode,
 			instruction.Name,
 			c.addressingModes[instruction.AddressingMode].Name,
 			instruction.Cycles,
+			instruction.AdditionalCycles,
 		)
 	}
 }
