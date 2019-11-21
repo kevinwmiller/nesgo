@@ -1,5 +1,10 @@
 package clock
 
+import (
+	"bufio"
+	"os"
+)
+
 // Clock is a counter that will call registeredComponents on their specified clock cycles
 type Clock struct {
 	clockCount           uint64
@@ -29,6 +34,7 @@ func (c *Clock) RegisterComponent(ticker Ticker, tickOn uint64) {
 func (c *Clock) Start() {
 	for {
 		c.Tick()
+		bufio.NewReader(os.Stdin).ReadBytes('\n')
 	}
 }
 

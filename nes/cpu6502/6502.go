@@ -73,15 +73,20 @@ func NewCPU() *CPU {
 	// The unused flag should be set at all times
 	cpu.instructions = cpu.buildInstructionTable()
 	cpu.addressingModes = cpu.buildAddressingModeTable()
-	cpu.Reset()
 	return &cpu
 }
 
 func (c *CPU) Write(address uint16, data uint8) {
+	if c.bus == nil {
+		return
+	}
 	c.bus.Write(address, data)
 }
 
 func (c *CPU) Read(address uint16) uint8 {
+	if c.bus == nil {
+		return 0
+	}
 	return c.bus.Read(address)
 }
 
@@ -107,8 +112,9 @@ func (c *CPU) Reset() {
 
 // Tick executes a single fetch/decode/execute cycle
 func (c *CPU) Tick() {
+	fmt.Println("Ticking")
 	if c.cycles == 0 {
-		// c.Dump()
+		c.Dump()
 		opcode := c.fetch()
 		instruction := &c.instructions[opcode]
 		addressingMode := &c.addressingModes[instruction.AddressingMode]
@@ -149,14 +155,14 @@ func (c *CPU) Dump() {
 	fmt.Printf("Status: %08b\n", c.Status)
 	fmt.Printf("Cycles: %d\n", c.cycles)
 
-	fmt.Println("Instructions: ")
-	for opcode, instruction := range c.instructions {
-		fmt.Printf("    %02X: %s - %-12s - %d cycles +%d*\n",
-			opcode,
-			instruction.Name,
-			c.addressingModes[instruction.AddressingMode].Name,
-			instruction.Cycles,
-			instruction.AdditionalCycles,
-		)
-	}
+	// fmt.Println("Instructions: ")
+	// for opcode, instruction := range c.instructions {
+	// 	fmt.Printf("    %02X: %s - %-12s - %d cycles +%d*\n",
+	// 		opcode,
+	// 		instruction.Name,
+	// 		c.addressingModes[instruction.AddressingMode].Name,
+	// 		instruction.Cycles,
+	// 		instruction.AdditionalCycles,
+	// 	)
+	// }
 }
