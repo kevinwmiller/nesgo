@@ -2,8 +2,8 @@ package cpu6502
 
 import (
 	"fmt"
-	"nesgo/nes/bus"
-	"nesgo/nes/cpu6502/flags"
+	"github.com/kevinwmiller/nesgo/nes/bus"
+	"github.com/kevinwmiller/nesgo/nes/cpu6502/flags"
 )
 
 // CPU represents an instance of a 2A03 chip which is based on the 6502 processor with the exception of BCD instructions

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"nesgo/nes/bus"
-	"nesgo/nes/clock"
-	"nesgo/nes/cpu6502"
+	"github.com/kevinwmiller/nesgo/nes/bus"
+	"github.com/kevinwmiller/nesgo/nes/clock"
+	"github.com/kevinwmiller/nesgo/nes/cpu6502"
 	"runtime"
 )
 
